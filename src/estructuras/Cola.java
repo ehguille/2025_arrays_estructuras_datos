@@ -3,18 +3,21 @@ package estructuras;
 public class Cola {
 	
 	private String[] array;
+	private int tamanioOriginal;
 
-	public Cola() {
-		array=new String[6];
+	public Cola(int tamanioOriginal) {
+		this.tamanioOriginal=tamanioOriginal;
+		array=new String[tamanioOriginal];
 	}
 	
 	public void encolar(String s) { //Meter en la cola
 		if(!estaLlena())
 			array[getFinal()]=s;
 		else {
-			//Crear un array de longitud array.lenght+6
-			//Clonar el array original en el nuevo
-			//Sobreescribir el viejo con el nuevo
+			String[] arrayMayor=new String[array.length+tamanioOriginal];
+			clonar(array,arrayMayor);
+			array=arrayMayor;
+			array[getFinal()]=s;
 		}
 	}
 	
@@ -23,7 +26,7 @@ public class Cola {
 	}
 	
 	public int getLongitud() {
-		return 0; //Devuelve el número de cadenas en la cola
+		return getFinal()-1;
 	}
 	
 	public String toString() {
@@ -51,9 +54,10 @@ public class Cola {
 			return false;			
 	}
 	
-	private void clonar(String[] origen,String[] destino) {
+	private String[] clonar(String[] origen,String[] destino) {
 		//Suponemos que el origen es más pequeño que el destino
 		for(int i=0;i<origen.length;i++)
 			destino[i]=origen[i];
+		return destino;
 	}
 }
