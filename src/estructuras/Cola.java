@@ -5,7 +5,7 @@ public class Cola {
 	private String[] array;
 	private int tamanioOriginal;
 	private static boolean DEPURACION=true;
-	private final String[] malsonantes= {"CULO","CACA","PEDO","PIS"};
+	private final String[] malsonantes= {"CULO","CACA","PEDO","PIS","PIS "};
 
 	public Cola(int tamanioOriginal) {
 		this.tamanioOriginal=tamanioOriginal;

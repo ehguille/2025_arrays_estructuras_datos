@@ -22,7 +22,14 @@ public class Aplicacion {
 			case 1:
 				System.out.println("Introduce una cadena para encolar:");
 				String cadena=s.next();
-				cola.encolar(cadena); //Paso la pelota al método anterior (indicando throws Exception en su cabecera)
+				try {
+					cola.encolar(cadena); //Me como el marrón	
+				} catch(Exception e) {
+					System.out.println("No puedes meter una palabra malsonante, ¿quieres que haga un trapi para meterla igualmente? (S\\N)");
+					String sino=s.next();
+					if(sino.equals("S"))
+						cola.encolar(cadena+" "); //Esto me obliga a poner un throws en la cabecera del método y pasar la pelota.
+				}				
 				break;
 			case 2:
 				try {
