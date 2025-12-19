@@ -8,6 +8,8 @@ public class Cola {
 	private final String[] malsonantes= {"CULO","CACA","PEDO","PIS","PIS "};
 
 	public Cola(int tamanioOriginal) {
+		if(tamanioOriginal<=0)
+			tamanioOriginal=3;
 		this.tamanioOriginal=tamanioOriginal;
 		array=new String[tamanioOriginal];
 	}
@@ -34,9 +36,9 @@ public class Cola {
 	
 	public String desencolar() throws Exception { // Sacar de la cola
 		if (array[0] == null) {
-			Exception e=new Exception("Se está intentando desencolar de una cola vacía.");
-			throw e;
-			//throw new Exception("Se está intentando..");
+		//	Exception e=new Exception("Se está intentando desencolar de una cola vacía.");
+		//	throw e;
+			throw new Exception("Se está intentando desencolar de una cola vacía.");
 		}
 		else {
 			imprimirTraza("Se desencola y se obtiene el elemento " + array[0]);
@@ -53,10 +55,6 @@ public class Cola {
 			imprimirTraza("Estado de la cola " + this.toString());
 			return cadenaRetorno;
 		}
-	}
-	
-	public int getLongitud() {
-		return getFinal()-1;
 	}
 	
 	public String toString() {
@@ -82,6 +80,14 @@ public class Cola {
 			return true;
 		else
 			return false;			
+	}
+	
+	public boolean estaVacia() {
+	/*	if(array[0]==null)
+			return true;
+		else
+			return false;*/
+		return array[0]==null;
 	}
 	
 	private String[] clonar(String[] origen,String[] destino) {
