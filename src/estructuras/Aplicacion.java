@@ -51,7 +51,11 @@ public class Aplicacion {
 				pila.push(cadena);
 				break;
 			case 2:
-				System.out.println(pila.pop());
+				try {
+					System.out.println(pila.pop());
+				} catch(Exception e) {
+					System.err.println(e.getMessage());
+				}
 				break;
 			default:
 				System.out.println("Volviendo al menú anterior...");	

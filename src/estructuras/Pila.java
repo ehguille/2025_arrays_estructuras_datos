@@ -30,7 +30,9 @@ public class Pila {
 		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
 	}
 	
-	public String pop() {
+	public String pop() throws Exception {
+		if(fin==0)
+			throw new Exception("No puedes sacar elementos de una pila vacía.");
 		fin--; //Se decrementa el valor del puntero al final de la cola
 		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
 		Depurador.imprimirTraza("Se saca un elemento de la pila.");
