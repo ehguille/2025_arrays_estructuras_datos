@@ -5,10 +5,39 @@ import java.util.Scanner;
 public class Aplicacion {
 
 	public Aplicacion() throws Exception {
-		this.menu();
+		this.mostrarMenu();
 	}
 
-	public static void menu() throws Exception {
+	public void mostrarMenu() throws Exception {
+		this.mostrarMenuGestionPilas();
+	}
+	
+	public void mostrarMenuGestionPilas() {
+		Pila pila=new Pila(3);
+		Scanner s=new Scanner(System.in);
+		int opcion=0;
+		do {
+			System.out.println("Gestión de pilas. Escoge una opción:");
+			System.out.println("1) Meter un String en la pila");
+			System.out.println("2) Sacar un String de la pila");
+			System.out.println("Otra opción: salir");
+			opcion=s.nextInt();
+			switch(opcion) {
+			case 1:
+				System.out.println("Introduce una cadena para encolar:");
+				String cadena=s.next();
+				pila.push(cadena);
+				break;
+			case 2:
+				System.out.println(pila.pop());
+				break;
+			default:
+				System.out.println("Volviendo al menú anterior...");	
+			}
+		} while(opcion==1||opcion==2);
+	}
+	
+	public void mostrarMenuGestionColas() throws Exception {
 		Cola cola=new Cola(3);
 		Scanner s=new Scanner(System.in);
 		int opcion=0;
@@ -42,10 +71,9 @@ public class Aplicacion {
 				}
 				break;
 			default:
-				System.out.println("Saliendo de la aplicación.");	
+				System.out.println("Volviendo al menú anterior...");	
 			}
 		} while(opcion==1||opcion==2);
-
 	}
 
 	public static void main(String[] args) throws Exception {
