@@ -9,7 +9,29 @@ public class Aplicacion {
 	}
 
 	public void mostrarMenu() throws Exception {
-		this.mostrarMenuGestionPilas();
+		Scanner s=new Scanner(System.in);
+		int opcion=0;
+		do {
+			System.out.println("Estructuras de datos. Escoge una opción:");
+			System.out.println("1) Trabajar con una cola.");
+			System.out.println("2) Trabajar con una pila.");
+			System.out.println("3) Trabajar con una lista circular.");
+			System.out.println("Otra opción: salir");
+			opcion=s.nextInt();
+			switch(opcion) {
+			case 1:
+				mostrarMenuGestionColas();
+				break;
+			case 2:
+				mostrarMenuGestionPilas();
+				break;
+			case 3:
+				System.out.println("Por hacer");
+				break;
+			default:
+				System.out.println("Saliendo de la aplicación...");
+			}
+		} while (opcion>=1&&opcion<=3);
 	}
 	
 	public void mostrarMenuGestionPilas() {
@@ -20,7 +42,7 @@ public class Aplicacion {
 			System.out.println("Gestión de pilas. Escoge una opción:");
 			System.out.println("1) Meter un String en la pila");
 			System.out.println("2) Sacar un String de la pila");
-			System.out.println("Otra opción: salir");
+			System.out.println("Otra opción: volver al menú anterior.");
 			opcion=s.nextInt();
 			switch(opcion) {
 			case 1:
@@ -45,7 +67,7 @@ public class Aplicacion {
 			System.out.println("Gestión de colas. Escoge una opción:");
 			System.out.println("1) Meter un String en la cola");
 			System.out.println("2) Sacar un String de la cola");
-			System.out.println("Otra opción: salir");
+			System.out.println("Otra opción: volver al menú anterior.");
 			opcion=s.nextInt();
 			switch(opcion) {
 			case 1:
