@@ -23,15 +23,28 @@ public class Pila {
 	 * Inserta en la pila un String
 	 * @param s String a introducir.
 	 */
-	public void push(String s) {
-		try {
-			Depurador.imprimirTraza("Se añade "+s+" a la pila.");
-			array[fin]=s;
-			fin++; //Se incrementa el valor del puntero al final de la cola
-		} catch(Exception e) {
-			System.err.println("La pila está llena. Operación anulada.");
-		}	
-		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
+	public void push(String s)  throws Exception {
+		if(fin==array.length) {
+			Depurador.imprimirTraza("Se ha llegado al límite del array. Se incrementa su tamaño.");
+			String[] arrayNuevo=new String[array.length+tamanioInicial];
+			clonar(array,arrayNuevo);
+			array=arrayNuevo;			
+		}
+		Depurador.imprimirTraza("Se añade " + s + " a la pila.");
+		array[fin]=s;
+		fin++; // Se incrementa el valor del puntero al final de la cola
+		Depurador.imprimirTraza("Valor del puntero 'fin':" + fin);
+	}
+	
+	private void clonar(String[] arrayOrigen, String[] arrayDestino) throws Exception {
+		Depurador.imprimirTraza("Se procede a clonar el array.");
+		int tamanioMenor=0;
+		if(arrayOrigen.length>arrayDestino.length)
+			tamanioMenor=arrayDestino.length;
+		else
+			tamanioMenor=arrayOrigen.length;
+		for(int i=0;i<tamanioMenor;i++)
+			arrayDestino[i]=arrayOrigen[i];
 	}
 	
 	public String pop() throws Exception {
@@ -49,5 +62,16 @@ public class Pila {
 		if(fin==0)
 			throw new Exception("La pila que intentas consultar está vacía");
 		return array[fin-1];
+	}
+	
+	public String toString() {
+		String cadena="{";
+		for(int i=0;i<array.length;i++) {
+			cadena+=array[i];
+			if(i<array.length-1)
+				cadena+=",";
+		}
+		cadena+="}";
+		return cadena;
 	}
 }

@@ -47,13 +47,18 @@ public class Aplicacion {
 			System.out.println("1) Meter un String en la pila");
 			System.out.println("2) Sacar un String de la pila");
 			System.out.println("3) Consultar el último elemento de la pila (sin sacarlo)");
+			System.out.println("4) Imprimir pila.");
 			System.out.println("Otra opción: volver al menú anterior.");
 			opcion=s.nextInt();
 			switch(opcion) {
 			case 1:
 				System.out.println("Introduce una cadena para encolar:");
 				String cadena=s.next();
-				pila.push(cadena);
+				try {
+					pila.push(cadena);
+				} catch (Exception e) {
+					System.err.println(e.getMessage());
+				}
 				break;
 			case 2:
 				try {
@@ -70,10 +75,14 @@ public class Aplicacion {
 					System.err.println(e.getMessage());
 					e.printStackTrace();
 				}
+				break;
+			case 4:
+				System.out.println(pila);
+				break;
 			default:
 				System.out.println("Volviendo al menú anterior...");	
 			}
-		} while(opcion==1||opcion==2||opcion==3);
+		} while(opcion>0&&opcion<5);
 	}
 	
 	public void mostrarMenuGestionColas() throws Exception {
