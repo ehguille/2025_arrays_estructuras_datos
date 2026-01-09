@@ -17,19 +17,23 @@ public class Aplicacion {
 			System.out.println("2) Trabajar con una pila.");
 			System.out.println("3) Trabajar con una lista circular.");
 			System.out.println("Otra opción: salir");
-			opcion=s.nextInt();
+			try {
+				opcion=s.nextInt();
+			} catch(Exception e) {
+				System.err.println("Debes introducir un número entero.");
+			}
 			switch(opcion) {
-			case 1:
-				mostrarMenuGestionColas();
-				break;
-			case 2:
-				mostrarMenuGestionPilas();
-				break;
-			case 3:
-				System.out.println("Por hacer");
-				break;
-			default:
-				System.out.println("Saliendo de la aplicación...");
+				case 1:
+					mostrarMenuGestionColas();
+					break;
+				case 2:
+					mostrarMenuGestionPilas();
+					break;
+				case 3:
+					System.out.println("Por hacer");
+					break;
+				default:
+					System.out.println("Saliendo de la aplicación...");
 			}
 		} while (opcion>=1&&opcion<=3);
 	}
@@ -42,6 +46,7 @@ public class Aplicacion {
 			System.out.println("Gestión de pilas. Escoge una opción:");
 			System.out.println("1) Meter un String en la pila");
 			System.out.println("2) Sacar un String de la pila");
+			System.out.println("3) Consultar el último elemento de la pila (sin sacarlo)");
 			System.out.println("Otra opción: volver al menú anterior.");
 			opcion=s.nextInt();
 			switch(opcion) {
@@ -57,10 +62,18 @@ public class Aplicacion {
 					System.err.println(e.getMessage());
 				}
 				break;
+			case 3:
+				try {
+					System.out.println(pila.consultar());
+				} catch(Exception e) {
+					System.err.println("Error al consultar la pila");
+					System.err.println(e.getMessage());
+					e.printStackTrace();
+				}
 			default:
 				System.out.println("Volviendo al menú anterior...");	
 			}
-		} while(opcion==1||opcion==2);
+		} while(opcion==1||opcion==2||opcion==3);
 	}
 	
 	public void mostrarMenuGestionColas() throws Exception {

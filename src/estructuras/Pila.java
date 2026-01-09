@@ -24,9 +24,13 @@ public class Pila {
 	 * @param s String a introducir.
 	 */
 	public void push(String s) {
-		Depurador.imprimirTraza("Se añade "+s+" a la pila.");
-		array[fin]=s;
-		fin++; //Se incrementa el valor del puntero al final de la cola
+		try {
+			Depurador.imprimirTraza("Se añade "+s+" a la pila.");
+			array[fin]=s;
+			fin++; //Se incrementa el valor del puntero al final de la cola
+		} catch(Exception e) {
+			System.err.println("La pila está llena. Operación anulada.");
+		}	
 		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
 	}
 	
@@ -39,5 +43,11 @@ public class Pila {
 		String resultado=array[fin];
 		array[fin]=null;	
 		return resultado;
+	}
+	
+	public String consultar() throws Exception {
+		if(fin==0)
+			throw new Exception("La pila que intentas consultar está vacía");
+		return array[fin-1];
 	}
 }
