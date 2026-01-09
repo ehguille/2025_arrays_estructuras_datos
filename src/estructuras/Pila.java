@@ -23,7 +23,7 @@ public class Pila {
 	 * Inserta en la pila un String
 	 * @param s String a introducir.
 	 */
-	public void push(String s)  throws Exception {
+	public void push(String s) {
 		if(fin==array.length) {
 			Depurador.imprimirTraza("Se ha llegado al límite del array. Se incrementa su tamaño.");
 			String[] arrayNuevo=new String[array.length+tamanioInicial];
@@ -36,7 +36,7 @@ public class Pila {
 		Depurador.imprimirTraza("Valor del puntero 'fin':" + fin);
 	}
 	
-	private void clonar(String[] arrayOrigen, String[] arrayDestino) throws Exception {
+	private void clonar(String[] arrayOrigen, String[] arrayDestino)  {
 		Depurador.imprimirTraza("Se procede a clonar el array.");
 		int tamanioMenor=0;
 		if(arrayOrigen.length>arrayDestino.length)
@@ -54,7 +54,14 @@ public class Pila {
 		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
 		Depurador.imprimirTraza("Se saca un elemento de la pila.");
 		String resultado=array[fin];
-		array[fin]=null;	
+		array[fin]=null;
+		//Si el array se ha "quedado grande", lo recorto.
+		if(fin==array.length-tamanioInicial) {
+			Depurador.imprimirTraza("Se recorta el array");
+			String[] arrayNuevo=new String[array.length-tamanioInicial];
+			clonar(array,arrayNuevo);
+			array=arrayNuevo;
+		}	
 		return resultado;
 	}
 	

@@ -6,6 +6,6 @@ public class Depurador {
 	
 	public static void imprimirTraza(String mensaje) {
 		if(DEPURACION==true)
-			System.out.println("[TRAZA] "+mensaje);
+			System.err.println("[TRAZA] "+mensaje);
 	}
 }
