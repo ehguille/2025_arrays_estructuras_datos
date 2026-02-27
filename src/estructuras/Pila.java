@@ -1,5 +1,7 @@
 package estructuras;
 
+import depurador.Depurador;
+
 public class Pila {
 	
 	private String[] array; //Array que sustenta la pila.
@@ -25,19 +27,19 @@ public class Pila {
 	 */
 	public void push(String s) {
 		if(fin==array.length) {
-			Depurador.imprimirTraza("Se ha llegado al límite del array. Se incrementa su tamaño.");
+			Depurador.trazar("Se ha llegado al límite del array. Se incrementa su tamaño.");
 			String[] arrayNuevo=new String[array.length+tamanioInicial];
 			clonar(array,arrayNuevo);
 			array=arrayNuevo;			
 		}
-		Depurador.imprimirTraza("Se añade " + s + " a la pila.");
+		Depurador.trazar("Se añade " + s + " a la pila.");
 		array[fin]=s;
 		fin++; // Se incrementa el valor del puntero al final de la cola
-		Depurador.imprimirTraza("Valor del puntero 'fin':" + fin);
+		Depurador.trazar("Valor del puntero 'fin':" + fin);
 	}
 	
 	private void clonar(String[] arrayOrigen, String[] arrayDestino)  {
-		Depurador.imprimirTraza("Se procede a clonar el array.");
+		Depurador.trazar("Se procede a clonar el array.");
 		int tamanioMenor=0;
 		if(arrayOrigen.length>arrayDestino.length)
 			tamanioMenor=arrayDestino.length;
@@ -51,13 +53,13 @@ public class Pila {
 		if(fin==0)
 			throw new Exception("No puedes sacar elementos de una pila vacía.");
 		fin--; //Se decrementa el valor del puntero al final de la cola
-		Depurador.imprimirTraza("Valor del puntero 'fin':"+fin);
-		Depurador.imprimirTraza("Se saca un elemento de la pila.");
+		Depurador.trazar("Valor del puntero 'fin':"+fin);
+		Depurador.trazar("Se saca un elemento de la pila.");
 		String resultado=array[fin];
 		array[fin]=null;
 		//Si el array se ha "quedado grande", lo recorto.
 		if(fin==array.length-tamanioInicial) {
-			Depurador.imprimirTraza("Se recorta el array");
+			Depurador.trazar("Se recorta el array");
 			String[] arrayNuevo=new String[array.length-tamanioInicial];
 			clonar(array,arrayNuevo);
 			array=arrayNuevo;

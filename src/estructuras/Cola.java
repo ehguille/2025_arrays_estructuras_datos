@@ -1,5 +1,7 @@
 package estructuras;
 
+import depurador.*;
+
 public class Cola {
 	
 	private String[] array;
@@ -19,18 +21,18 @@ public class Cola {
 			throw new Exception("No se admiten palabras malsonantes.");
 		if(!estaLlena()) {
 			array[getFinal()]=s;
-			Depurador.imprimirTraza("Cola con espacio disponible");
-			Depurador.imprimirTraza("Se mete "+s+" en la cola.");
-			Depurador.imprimirTraza("Estado de la cola: "+this.toString());
+			Depurador.trazar("Cola con espacio disponible");
+			Depurador.trazar("Se mete "+s+" en la cola.");
+			Depurador.trazar("Estado de la cola: "+this.toString());
 		}
 		else {
-			Depurador.imprimirTraza("Cola llena. Se amplía su tamaño.");
+			Depurador.trazar("Cola llena. Se amplía su tamaño.");
 			String[] arrayMayor=new String[array.length+tamanioOriginal];
 			clonar(array,arrayMayor);
 			array=arrayMayor;
-			Depurador.imprimirTraza("Se mete "+s+" en la cola.");
+			Depurador.trazar("Se mete "+s+" en la cola.");
 			array[getFinal()]=s;
-			Depurador.imprimirTraza("Estado de la cola: "+this.toString());
+			Depurador.trazar("Estado de la cola: "+this.toString());
 		}
 	}
 	
@@ -41,18 +43,18 @@ public class Cola {
 			throw new Exception("Se está intentando desencolar de una cola vacía.");
 		}
 		else {
-			Depurador.imprimirTraza("Se desencola y se obtiene el elemento " + array[0]);
+			Depurador.trazar("Se desencola y se obtiene el elemento " + array[0]);
 			String cadenaRetorno = array[0];
-			Depurador.imprimirTraza("Se comprime el array");
+			Depurador.trazar("Se comprime el array");
 			for (int i = 0; i < array.length - 1; i++)
 				array[i] = array[i + 1];
 			if (getFinal() < array.length - tamanioOriginal) {
-				Depurador.imprimirTraza("Se libera espacio en memoria");
+				Depurador.trazar("Se libera espacio en memoria");
 				String[] arrayMenor = new String[array.length - tamanioOriginal];
 				arrayMenor = clonar(array, arrayMenor);
 				array = arrayMenor;
 			}
-			Depurador.imprimirTraza("Estado de la cola " + this.toString());
+			Depurador.trazar("Estado de la cola " + this.toString());
 			return cadenaRetorno;
 		}
 	}
@@ -91,7 +93,7 @@ public class Cola {
 	}
 	
 	private String[] clonar(String[] origen,String[] destino) {
-		Depurador.imprimirTraza("Se clona origen (ID del objeto='"+origen+"') en destino (ID del objeto='"+destino+"'");
+		Depurador.trazar("Se clona origen (ID del objeto='"+origen+"') en destino (ID del objeto='"+destino+"'");
 		int menorTamanio;
 		if(origen.length<destino.length)
 			menorTamanio=origen.length;

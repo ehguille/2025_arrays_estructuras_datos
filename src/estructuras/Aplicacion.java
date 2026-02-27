@@ -2,6 +2,8 @@ package estructuras;
 
 import java.util.Scanner;
 
+import depurador.Depurador;
+
 public class Aplicacion {
 
 	public Aplicacion() throws Exception {
@@ -125,6 +127,7 @@ public class Aplicacion {
 	}
 
 	public static void main(String[] args) throws Exception {
+		Depurador.encender();
 		Aplicacion a = new Aplicacion();
 	}
 
